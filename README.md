@@ -1,14 +1,10 @@
 ## 🔥 Features
 
-- [x] Minimalistic and sleek design
-- [x] Highly optimized performance
-- [x] Inspired by portfolios of successful professionals
-- [x] Fully responsive layout
+- [x] Create bots efficiently
+- [x] You design your bots your way
+- [x] A variety of themes for your bot.
 - [x] Dark mode support
-
-## 💯 Lighthouse score
-![Lighthouse](https://github.com/user-attachments/assets/e1fe76e9-dd31-4ca5-a16a-12947d6f83de)
-
+- [x] Soon...
 
 ## 🔏 License
 
