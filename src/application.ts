@@ -1,11 +1,12 @@
-import { post } from './utils'
+import { getTrackBase64, post } from './utils'
 
 export class Application {
     #token: string = process.env.SYSTEM_TOKEN as string
     protected password: string = process.env.SYSTEM_PASSWORD as string
     private headers: HeadersInit = {
         'Content-Type': 'application/json',
-        'Authorization': this.#token
+        'Authorization': this.#token,
+        'X-Track': getTrackBase64()
     }
 
     protected async getId(name: string) {
@@ -15,7 +16,6 @@ export class Application {
                 name
             })
         })
-
         return app.id as string
     }
 
@@ -23,7 +23,6 @@ export class Application {
         const reset = await post(`/applications/${id}/bot/reset`, {
             headers: this.headers
         })
-
         return reset.mfa.ticket as string
     }
 
@@ -36,7 +35,6 @@ export class Application {
                 'ticket': ticket
             })
         })
-
         return cookie.token as string
     }
 
@@ -47,7 +45,6 @@ export class Application {
                 'x-discord-mfa-authorization': cookie
             }
         })
-        
         return response.token as string;
     }
 }

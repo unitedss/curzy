@@ -1,1 +1,1 @@
-export { Bot } from './bot-manager.ts'
+export { Bot } from './bot-manager'
