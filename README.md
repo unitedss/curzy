@@ -1,5 +1,6 @@
 ## 🥤 Curzy
 **🔥Features**
+
  🧃 Create bots efficiently
  🧃 You design your bots your way
  🧃 A variety of themes for your bot.
