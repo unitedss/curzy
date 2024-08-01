@@ -10,7 +10,7 @@ export class Bot extends Application {
     
     private validate(options: BotOptions) {
         if (typeof options !== 'object') throw TypeError('Options should be a type of Object.')
-        if (!options.name) throw Error('Por favor, especifica el nombre del bot!')
+        if (!options.name) throw Error('Please specify the bot name!')
         this.name = options.name
     }
 
