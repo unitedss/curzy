@@ -1,3 +1,0 @@
-interface BotOptions {
-    name: string
-}
