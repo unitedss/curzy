@@ -1,45 +1,38 @@
 {
-	"name": "@uniteds/curzy",
-	"version": "1.0.1",
-	"module": "src/index.ts",
-	"type": "module",
-	"publishConfig": {
-		"access": "public"
-	},
-	"scripts": {
-		"build": "tsup"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.8.3",
-		"@ryuux/config": "^1.0.1",
-		"@types/bun": "latest",
-		"@types/node": "^22.0.2",
-		"dotenv": "^16.4.5",
-		"lefthook": "^1.7.11",
-		"lint-staged": "^15.2.7",
-		"tsup": "^8.2.3"
-	},
-	"peerDependencies": {
-		"typescript": "^5.0.0"
-	},
-	"exports": {
-		".": {
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.js"
-			},
-			"require": {
-				"types": "./dist/index.d.cts",
-				"default": "./dist/index.cjs"
-			}
-		}
-	},
-	"files": ["dist/**/*"],
-	"types": "dist/index.d.ts",
-	"lint-staged": {
-		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
-			"biome format --write --no-errors-on-unmatched",
-			"biome lint --write --no-errors-on-unmatched"
-		]
-	}
+  "name": "@uniteds/curzy",
+  "version": "1.0.1",
+  "module": "src/index.ts",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@ryuux/config": "^1.0.2",
+    "@types/bun": "latest",
+    "@types/node": "^22.0.2",
+    "dotenv": "^16.4.5",
+    "lefthook": "^1.7.11",
+    "tsup": "^8.2.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": ["dist/**/*"],
+  "types": "dist/index.d.ts"
 }

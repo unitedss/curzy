@@ -1,4 +1,6 @@
 pre-commit:
   commands:
-    lint-staged:
-      run: bunx lint-staged
+    check:
+      glob: "*.{ts,json}"
+      run: bunx @biomejs/biome check --fix --files-ignore-unknown=true --colors=off {staged_files}
+      stage_fixed: true
