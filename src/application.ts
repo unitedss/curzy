@@ -24,9 +24,9 @@ export class Application {
     return response
   }
 
-  protected async deleteApplication(id: string) {
+  protected async deleteApplication(id: string, cookie: string) {
     if (typeof id !== 'string' || !id) throw Error('ID not valid!')
-    const response = await this.rest.deleteApplication(id)
+    const response = await this.rest.deleteApplication(id, cookie)
     return response
   }
 }

@@ -7,6 +7,8 @@
     "access": "public"
   },
   "scripts": {
+    "lint": "biome lint --write src/*.ts",
+    "fmt": "pnpm biome format --write src/*.ts",
     "build": "tsup"
   },
   "devDependencies": {

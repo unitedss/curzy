@@ -16,7 +16,14 @@ export class Network {
 
   async getApplication(id: string) {}
 
-  async deleteApplication(id: string) {}
+  async deleteApplication(id: string, cookie: string) {
+    const app = await post(`/applications/${id}/delete`, {
+      headers: {
+        ...this.headers,
+        'x-discord-mfa-authorization': cookie
+      }
+    });
+  }
 
   async createApplication(name: string) {
     const app = await post('/applications', {

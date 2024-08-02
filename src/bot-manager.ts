@@ -29,7 +29,7 @@ export class Bot extends Application {
       throw TypeError('Tag(s) should be a type of Array<String>')
     if (!Array.isArray(options.owners))
       throw TypeError('Owner(s) should be a type of Array<String>')
-    if (Buffer.isBuffer(options.avatar))
+    if (!Buffer.isBuffer(options.avatar))
       throw TypeError('Avatar should be a type of Buffer.')
     this.name = options.name
     this.description = options.description
@@ -47,8 +47,8 @@ export class Bot extends Application {
     return application
   }
 
-  async delete(id: string) {
-    const application = await this.deleteApplication(id)
+  async delete(id: string, cookie: string) {
+    const application = await this.deleteApplication(id, cookie)
     return application
   }
 }
