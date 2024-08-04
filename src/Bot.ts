@@ -1,4 +1,4 @@
-import { Application } from './application'
+import { Create, Delete } from './actions/index'
 
 interface Options {
   name: string
@@ -8,7 +8,7 @@ interface Options {
   avatar?: Buffer
 }
 
-export class Bot extends Application {
+export class Bot {
   private name!: string
   private description?: string
   private tags?: string[]
@@ -16,8 +16,13 @@ export class Bot extends Application {
   private avatar?: Buffer
 
   constructor(options: Options) {
-    super()
     this.validate(options)
+
+    this.name = options.name
+    this.description = options.description
+    this.tags = options.tags
+    this.owners = options.owners
+    this.avatar = options.avatar
   }
 
   private validate(options: Options) {
@@ -25,30 +30,14 @@ export class Bot extends Application {
       throw TypeError('Options should be a type of Object.')
     if (!options.name)
       throw Error('You must provide the name of the application.')
-    if (!Array.isArray(options.tags))
+    if (Reflect.has(options, 'tags') && !Array.isArray(options.tags))
       throw TypeError('Tag(s) should be a type of Array<String>')
-    if (!Array.isArray(options.owners))
+    if (Reflect.has(options, 'owners') && !Array.isArray(options.owners))
       throw TypeError('Owner(s) should be a type of Array<String>')
-    if (!Buffer.isBuffer(options.avatar))
+    if (Reflect.has(options, 'avatar') && !Buffer.isBuffer(options.avatar))
       throw TypeError('Avatar should be a type of Buffer.')
-    this.name = options.name
-    this.description = options.description
-    this.tags = options.tags
-    this.owners = options.owners
   }
 
-  async get(id: string) {
-    const application = await this.getApplication(id)
-    return application
-  }
-
-  async create() {
-    const application = await this.createApplication(this.name)
-    return application
-  }
-
-  async delete(id: string, cookie: string) {
-    const application = await this.deleteApplication(id, cookie)
-    return application
-  }
+  public create = async () => new Create().request<string>(this.name)
+  public delete = async (id: string) => new Delete().request<string>(id)
 }

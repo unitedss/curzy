@@ -26,6 +26,5 @@ export const post = async (path: string, options: RequestInit) => {
   const url = new URL('https://discord.com/api/v9'.concat(path))
   const response = await fetch(url, options)
   const data = await response.json()
-  if (!response.ok) throw new Error(response.statusText)
   return data
 }
