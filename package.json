@@ -7,8 +7,8 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "biome lint --write src/*.ts",
-    "fmt": "biome format --write src/*.ts",
+    "lint": "biome lint --write src/**/*.ts",
+    "fmt": "biome format --write src/**/*.ts",
     "build": "tsup"
   },
   "devDependencies": {

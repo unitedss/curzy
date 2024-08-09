@@ -1,1 +1,1 @@
-export { Bot } from './bot-manager'
+export { Bot } from './Bot'
