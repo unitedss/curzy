@@ -24,25 +24,6 @@ export class Create extends Application {
     return app
   }
 
-  private async getTicket(id: string) {
-    const reset = await post(`/applications/${id}/bot/reset`, {
-      headers: this.headers
-    })
-    return reset.mfa.ticket as string
-  }
-
-  private async getCookie(ticket: string) {
-    const cookie = await post('/mfa/finish', {
-      headers: this.headers,
-      body: JSON.stringify({
-        data: this.password,
-        mfa_type: 'password',
-        ticket: ticket
-      })
-    })
-    return cookie.token as string
-  }
-
   private async getToken(id: string, cookie: string) {
     const response = await post(`/applications/${id}/bot/reset`, {
       headers: {
