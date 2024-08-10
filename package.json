@@ -1,23 +1,31 @@
 {
   "name": "@uniteds/curzy",
-  "version": "1.0.1",
+  "version": "0.0.0-automated",
+  "description": "Library to create a quick and easy discord bot",
   "module": "src/index.ts",
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
+  "keywords": ["discord-bot", "generator", "curzy"],
+  "homepage": "https://github.com/unitedss/curzy",
+  "bugs": "https://github.com/unitedss/curzy/issues",
+  "license": "MIT",
+  "author": "Unitedss",
+  "files": ["dist/**/*"],
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "repository": "unitedss/curzy",
   "scripts": {
     "lint": "biome lint --write src/**/*.ts",
-    "fmt": "biome format --write src/**/*.ts",
+    "fmt": "biome format --write .",
     "build": "tsup"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
-    "@ryuux/config": "^1.0.2",
     "@types/bun": "latest",
     "@types/node": "^22.0.2",
     "dotenv": "^16.4.5",
+    "install": "^0.13.0",
     "lefthook": "^1.7.11",
+    "semantic-release": "^24.0.0",
     "tsup": "^8.2.3"
   },
   "peerDependencies": {
@@ -35,6 +43,7 @@
       }
     }
   },
-  "files": ["dist/**/*"],
-  "types": "dist/index.d.ts"
+  "publishConfig": {
+    "access": "public"
+  }
 }
