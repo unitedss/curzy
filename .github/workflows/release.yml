@@ -1,42 +1,36 @@
-name: Release
-
+name: Release CI
 on:
   push:
     branches:
       - main
       - next
       - rc
-  workflow_dispatch:
 
 jobs:
   release:
-    name: Release / Node ${{ matrix.node }}
-    strategy:
-      matrix:
-        node: ['20']
-
+    name: Release
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      issues: write
-      id-token: write
-
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: "lts/*"
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
 
-      - run: |
-          npm ci
-          npm run build
+      - name: Install deps
+        run: bun i
 
-      - uses: cycjimmy/semantic-release-action@v4
-        with:
-          semantic_version: 19
+      - name: Lint
+        run: bun run lint
+
+      - name: Build
+        run: bun run build
+
+      - name: Release
+        run: bun run release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

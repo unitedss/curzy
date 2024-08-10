@@ -4,16 +4,20 @@
   "description": "Library to create a quick and easy discord bot",
   "module": "src/index.ts",
   "type": "module",
+  "author": "Unitedss",
+  "license": "MIT",
   "keywords": ["discord-bot", "generator", "curzy"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unitedss/curzy.git"
+  },
   "homepage": "https://github.com/unitedss/curzy",
   "bugs": "https://github.com/unitedss/curzy/issues",
-  "license": "MIT",
-  "author": "Unitedss",
   "files": ["dist/**/*"],
   "types": "dist/index.d.ts",
   "sideEffects": false,
-  "repository": "unitedss/curzy",
   "scripts": {
+    "release": "semantic-release",
     "lint": "biome lint --write src/**/*.ts",
     "fmt": "biome format --write .",
     "build": "tsup"
