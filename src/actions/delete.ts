@@ -1,5 +1,5 @@
 import Application from '../Application'
-import { post } from '../utils'
+import {post} from '../utils'
 
 export class Delete extends Application {
   public async request<T>(id: T): Promise<boolean> {
@@ -8,8 +8,8 @@ export class Delete extends Application {
     await post(`/applications/${id}/delete`, {
       headers: {
         ...this.headers,
-        'x-discord-mfa-authorization': cookie
-      }
+        'x-discord-mfa-authorization': cookie,
+      },
     })
     return true
   }

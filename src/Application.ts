@@ -1,4 +1,4 @@
-import { getTrackBase64, post } from './utils'
+import {getTrackBase64, post} from './utils'
 
 export default abstract class Application {
   #token: string = process.env.SYSTEM_TOKEN as string
@@ -6,12 +6,12 @@ export default abstract class Application {
   protected headers: Record<string, string> = {
     'Content-Type': 'application/json',
     Authorization: this.#token,
-    'X-Track': getTrackBase64()
+    'X-Track': getTrackBase64(),
   }
 
   public async getTicket(id: string) {
     const reset = await post(`/applications/${id}/bot/reset`, {
-      headers: this.headers
+      headers: this.headers,
     })
     return reset.mfa.ticket as string
   }
@@ -22,8 +22,8 @@ export default abstract class Application {
       body: JSON.stringify({
         data: this.password,
         mfa_type: 'password',
-        ticket: ticket
-      })
+        ticket: ticket,
+      }),
     })
     return cookie.token as string
   }

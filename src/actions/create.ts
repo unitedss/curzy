@@ -1,5 +1,5 @@
 import Application from '../Application'
-import { post } from '../utils'
+import {post} from '../utils'
 
 export class Create extends Application {
   public async request<T>(name: T) {
@@ -10,7 +10,7 @@ export class Create extends Application {
 
     return {
       ...application,
-      token
+      token,
     }
   }
 
@@ -18,8 +18,8 @@ export class Create extends Application {
     const app = await post('/applications', {
       headers: this.headers,
       body: JSON.stringify({
-        name
-      })
+        name,
+      }),
     })
     return app
   }
@@ -28,8 +28,8 @@ export class Create extends Application {
     const response = await post(`/applications/${id}/bot/reset`, {
       headers: {
         ...this.headers,
-        'x-discord-mfa-authorization': cookie
-      }
+        'x-discord-mfa-authorization': cookie,
+      },
     })
     return response.token as string
   }

@@ -1,4 +1,4 @@
-import { Create, Delete } from './actions/index'
+import {Create, Delete} from './actions/index'
 
 interface Options {
   name: string
@@ -28,8 +28,7 @@ export class Bot {
   private validate(options: Options) {
     if (typeof options !== 'object')
       throw TypeError('Options should be a type of Object.')
-    if (!options.name)
-      throw Error('You must provide the name of the application.')
+    if (!options.name) throw Error('You must provide the name of the application.')
     if (Reflect.has(options, 'tags') && !Array.isArray(options.tags))
       throw TypeError('Tag(s) should be a type of Array<String>')
     if (Reflect.has(options, 'owners') && !Array.isArray(options.owners))

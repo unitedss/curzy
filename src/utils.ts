@@ -14,7 +14,7 @@ export const getTrackBase64 = () => {
     referring_domain_current: '',
     release_channel: 'stable',
     client_build_number: 42503,
-    client_event_source: null
+    client_event_source: null,
   }
   const data = JSON.stringify(options)
   const track = Buffer.from(data).toString('base64')
