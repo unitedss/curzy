@@ -37,6 +37,6 @@
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true,
-    "defaultBranch": "master"
+    "defaultBranch": "main"
   }
 }
