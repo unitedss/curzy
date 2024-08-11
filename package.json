@@ -1,6 +1,6 @@
 {
   "name": "@uniteds/curzy",
-  "version": "0.0.0-automated",
+  "version": "1.0.3",
   "description": "Library to create a quick and easy discord bot",
   "module": "src/index.ts",
   "type": "module",
