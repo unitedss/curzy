@@ -1,0 +1,43 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@uniteds/curzy':
+        specifier: ^1.1.0
+        version: 1.1.0(typescript@5.5.4)
+    devDependencies:
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+
+packages:
+
+  '@uniteds/curzy@1.1.0':
+    resolution: {integrity: sha512-v6vMEEs+3DcRTxwr1EPvxwmiTpoy+krPTvKqlldFs6c63ROIG6ijTwYhR4/qMsUrVsN/D6MuHRhni/MqaMFYtQ==}
+    peerDependencies:
+      typescript: ^5.0.0
+
+  dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+    engines: {node: '>=12'}
+
+  typescript@5.5.4:
+    resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+snapshots:
+
+  '@uniteds/curzy@1.1.0(typescript@5.5.4)':
+    dependencies:
+      typescript: 5.5.4
+
+  dotenv@16.4.5: {}
+
+  typescript@5.5.4: {}

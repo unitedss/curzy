@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import {Bot} from '@uniteds/curzy'
 
 const app = new Bot({name: 'My Bot'})
