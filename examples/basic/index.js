@@ -1,6 +1,8 @@
 import 'dotenv/config'
-import {Bot} from '@uniteds/curzy'
+import { Application } from '@uniteds/curzy'
 
-const app = new Bot({name: 'My Bot'})
-const bot = await app.create()
+const [token, password] = process.env
+const app = new Application().setCredentials(token, password)
+const bot = await app.create({ name: 'My Bot' })
+
 console.log(bot.token)
