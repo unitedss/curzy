@@ -1,3 +1,17 @@
+export const get = async (url: URL, options: RequestInit) => {
+  options.method = 'GET'
+  const response = await fetch(url, options)
+  const data = await response.json()
+  return data
+}
+
+export const post = async (url: URL | string, options: RequestInit) => {
+  options.method = 'POST'
+  const response = await fetch(url, options)
+  const data = await response.json()
+  return data
+}
+
 export const getTrackBase64 = () => {
   const options = {
     os: 'Windows',
@@ -19,12 +33,4 @@ export const getTrackBase64 = () => {
   const data = JSON.stringify(options)
   const track = Buffer.from(data).toString('base64')
   return track
-}
-
-export const post = async (path: string, options: RequestInit) => {
-  options.method = 'POST'
-  const url = new URL('https://discord.com/api/v9'.concat(path))
-  const response = await fetch(url, options)
-  const data = await response.json()
-  return data
 }

@@ -1,32 +1,58 @@
-import {getTrackBase64, post} from './utils'
+import { REST } from './REST'
+import type { CreateApplicationOptions } from './utils/types'
+const DEFAULT_VERSION = 10
 
-export default abstract class Application {
-  #token: string = process.env.SYSTEM_TOKEN as string
-  protected password: string = process.env.SYSTEM_PASSWORD as string
-  protected headers: Record<string, string> = {
-    'Content-Type': 'application/json',
-    Authorization: this.#token,
-    'X-Track': getTrackBase64(),
-  }
+export class Application {
+  protected rest: REST
+  #token: string | null = null
+  #password: string | null = null
 
-  public async getTicket(id: string) {
-    const reset = await post(`/applications/${id}/bot/reset`, {
-      headers: this.headers,
+  /**
+   * Manage an discord bot application.
+   * @param version - The version of the API to use
+   */
+  constructor(protected version: number = DEFAULT_VERSION) {
+    this.version = version
+    this.rest = new REST({
+      api: 'https://discord.com/api',
+      version: this.version,
     })
-    return reset.mfa.ticket as string
   }
 
-  public async getCookie(ticket: string) {
-    const cookie = await post('/mfa/finish', {
-      headers: this.headers,
-      body: JSON.stringify({
-        data: this.password,
-        mfa_type: 'password',
-        ticket: ticket,
-      }),
-    })
-    return cookie.token as string
+  /**
+   * Return a specific application.
+   * @param id - The id of the application.
+   */
+  public async get(id?: string) {
+    return this.rest.get(id)
   }
 
-  public abstract request<T>(options: T): Promise<unknown>
+  /**
+   * Create a new application.
+   * @param options - The options to create the application.
+   */
+  public async create(options: Partial<CreateApplicationOptions>) {
+    return this.rest.create(options)
+  }
+
+  /**
+   * Delete a specific application.
+   * @param id - The id of the application.
+   */
+  public async delete(id: string) {
+    return this.rest.delete(id)
+  }
+
+  /**
+   * Sets the authorization token that should be used for requests
+   *
+   * @param token - The authorization token to use
+   * @param password - The authorization password to use
+   */
+  setCredentials(token: string, password: string) {
+    this.#token = token
+    this.#password = password
+    this.rest.setCredentials(this.#token, this.#password)
+    return this
+  }
 }
